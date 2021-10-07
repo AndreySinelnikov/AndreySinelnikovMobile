@@ -1,9 +1,7 @@
-package homework;
+package homework3Native;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import java.util.List;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;

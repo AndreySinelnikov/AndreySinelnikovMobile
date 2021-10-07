@@ -14,7 +14,7 @@
       </run>
     </groups>
     <packages>
-      <package name="homework"/>
+      <package name="homework2"/>
     </packages>
   </test>
 </suite>

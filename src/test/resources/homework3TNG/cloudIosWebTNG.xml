@@ -1,0 +1,17 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Cloud Android web mobile testing Suite">
+  <parameter name="platformName" value="iOS"></parameter>
+  <parameter name="browserName" value="Safari"></parameter>
+
+  <parameter name="searchItem" value="EPAM"></parameter>
+  <test name="Web tests">
+    <groups>
+      <run>
+        <include name="web"/>
+      </run>
+    </groups>
+    <packages>
+      <package name="homework3Web"/>
+    </packages>
+  </test>
+</suite>

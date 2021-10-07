@@ -1,4 +1,4 @@
-package homework;
+package homework3Web;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -11,13 +11,19 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import setup.BaseTest;
+import setup.CloudWebTest;
 
-public class webMobileTests extends BaseTest {
+public class webMobileTests extends CloudWebTest {
 
     @Parameters({"searchItem"})
     @Test(groups = {"web"}, description = "Searching item via Google search page produces some relevant results")
     public void googleSearchShouldProduceSomeRelevantResults(String searchItem) {
         getDriver().get("https://www.google.com/");
+
+        new WebDriverWait(getDriver(), 10).until(
+            wd -> ((JavascriptExecutor) wd).executeScript("return document.readyState").equals("complete")
+        );
+
         WebElement searchForm = getDriver().findElement(By.cssSelector("input[aria-autocomplete]"));
         searchForm.sendKeys(searchItem);
         searchForm.sendKeys(Keys.ENTER);

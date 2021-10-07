@@ -23,7 +23,6 @@
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
             <version>3.21.0</version>
-            <scope>test</scope>
         </dependency>
 
     </dependencies>
@@ -92,6 +91,26 @@
             </activation>
             <properties>
                 <suite.file>./src/test/resources/homeworkWebTNG.xml</suite.file>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>cloudAndroidWeb</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <suite.file>./src/test/resources/homework3TNG/cloudAndroidWebTNG.xml</suite.file>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>cloudIosWeb</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <suite.file>./src/test/resources/homework3TNG/cloudIosWebTNG.xml</suite.file>
             </properties>
         </profile>
     </profiles>
