@@ -6,8 +6,9 @@ import org.openqa.selenium.WebElement;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import setup.BaseTest;
+import setup.CloudNativeTest;
 
-public class nativeMobileTests extends BaseTest {
+public class nativeMobileTests extends CloudNativeTest {
 
     @Parameters({"username", "email", "password"})
     @Test(groups = {"native"}, description = "After registering as a new user and signing in"

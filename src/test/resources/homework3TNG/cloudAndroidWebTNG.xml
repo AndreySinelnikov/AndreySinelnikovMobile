@@ -4,7 +4,7 @@
   <parameter name="browserName" value="Chrome"></parameter>
 
   <parameter name="searchItem" value="EPAM"></parameter>
-  <test name="Web tests">
+  <test name="Cloud Android web app tests">
     <groups>
       <run>
         <include name="web"/>

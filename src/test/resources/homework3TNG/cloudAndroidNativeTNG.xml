@@ -1,0 +1,20 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Cloud Android native app mobile testing Suite">
+  <parameter name="platformName" value="Android"></parameter>
+  <parameter name="appPackage" value="platkovsky.alexey.epamtestapp"></parameter>
+  <parameter name="appActivity" value="activities.LoginActivity"></parameter>
+
+  <parameter name="username" value="Test user"></parameter>
+  <parameter name="email" value="testuser@gmail.com"></parameter>
+  <parameter name="password" value="registersesame1234"></parameter>
+  <test name="Cloud native Android tests">
+    <groups>
+      <run>
+        <include name="native"/>
+      </run>
+    </groups>
+    <packages>
+      <package name="homework3Native"/>
+    </packages>
+  </test>
+</suite>

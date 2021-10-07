@@ -113,6 +113,16 @@
                 <suite.file>./src/test/resources/homework3TNG/cloudIosWebTNG.xml</suite.file>
             </properties>
         </profile>
+
+        <profile>
+            <id>cloudAndroidNative</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <suite.file>./src/test/resources/homework3TNG/cloudAndroidNativeTNG.xml</suite.file>
+            </properties>
+        </profile>
     </profiles>
 
 </project>

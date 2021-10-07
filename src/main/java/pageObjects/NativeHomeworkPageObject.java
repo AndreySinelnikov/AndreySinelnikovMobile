@@ -3,10 +3,12 @@ package pageObjects;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
+import java.lang.reflect.Field;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
+import setup.IPageObject;
 
-public class NativeHomeworkPageObject {
+public class NativeHomeworkPageObject implements IPageObject {
 
     // login page
     @AndroidFindBy(id = "platkovsky.alexey.epamtestapp:id/login_email")
@@ -44,5 +46,14 @@ public class NativeHomeworkPageObject {
 
     public NativeHomeworkPageObject(AppiumDriver appiumDriver) {
         PageFactory.initElements( new AppiumFieldDecorator(appiumDriver), this);
+    }
+
+    @Override
+    public WebElement getWelement(String weName) throws NoSuchFieldException, IllegalAccessException {
+        // use reflection technique
+        Field field = this.getClass().getDeclaredField(weName);
+        field.setAccessible(true);
+        return (WebElement) field.get(this);
+
     }
 }
