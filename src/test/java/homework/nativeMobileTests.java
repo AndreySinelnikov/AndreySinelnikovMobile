@@ -29,8 +29,10 @@ public class nativeMobileTests extends BaseTest {
         getPo().getWelement("loginField").sendKeys(email);
         getPo().getWelement("passwordField").sendKeys(password);
         getPo().getWelement("signInButton").click();
-        
+
         WebElement expensesList = getPo().getWelement("expensesList");
-        assertThat(expensesList).isNotNull();
+        assertThat(expensesList)
+            .as("There should be an 'Expenses list' element on the page")
+            .isNotNull();
     }
 }
