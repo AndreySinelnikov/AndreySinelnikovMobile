@@ -37,6 +37,10 @@ public class NativeHomeworkPageObject {
     @AndroidFindBy(id = "platkovsky.alexey.epamtestapp:id/register_new_account_button")
     WebElement registerNewAccountButton;
 
+    // budget page
+    @AndroidFindBy(id = "platkovsky.alexey.epamtestapp:id/expenses_list")
+    WebElement expensesList;
+
 
     public NativeHomeworkPageObject(AppiumDriver appiumDriver) {
         PageFactory.initElements( new AppiumFieldDecorator(appiumDriver), this);
