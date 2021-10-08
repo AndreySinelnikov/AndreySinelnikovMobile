@@ -1,4 +1,4 @@
-package setup;
+package setup.examples;
 
 import org.openqa.selenium.WebElement;
 
