@@ -3,6 +3,7 @@ package homework3Web;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
+import java.util.Objects;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
@@ -10,7 +11,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
-import setup.BaseTest;
 import setup.CloudWebTest;
 
 public class webMobileTests extends CloudWebTest {
@@ -20,17 +20,14 @@ public class webMobileTests extends CloudWebTest {
     public void googleSearchShouldProduceSomeRelevantResults(String searchItem) {
         getDriver().get("https://www.google.com/");
 
-        new WebDriverWait(getDriver(), 10).until(
-            wd -> ((JavascriptExecutor) wd).executeScript("return document.readyState").equals("complete")
-        );
+        WebDriverWait wait = new WebDriverWait(getDriver(), 23);
+        wait.until(wd -> ((JavascriptExecutor) wd).executeScript("return document.readyState").equals("complete"));
 
         WebElement searchForm = getDriver().findElement(By.cssSelector("input[aria-autocomplete]"));
         searchForm.sendKeys(searchItem);
         searchForm.sendKeys(Keys.ENTER);
 
-        new WebDriverWait(getDriver(), 10).until(
-            wd -> ((JavascriptExecutor) wd).executeScript("return document.readyState").equals("complete")
-        );
+        wait.until(wd -> ((JavascriptExecutor) wd).executeScript("return document.readyState").equals("complete"));
 
         List<WebElement> linkHeaders = getDriver().findElements(By.cssSelector("div h3"));
         // count occurrences of the item being searched in link header texts

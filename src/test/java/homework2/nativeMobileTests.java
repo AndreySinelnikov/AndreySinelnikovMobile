@@ -5,7 +5,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
-import setup.BaseTest;
+import setup.examples.BaseTest;
 
 public class nativeMobileTests extends BaseTest {
 

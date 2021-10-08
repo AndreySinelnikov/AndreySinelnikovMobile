@@ -12,27 +12,32 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
-import pageObjects.NativeHomeworkPageObject;
-import pageObjects.PageObject;
+import pageObjects.BudgetActivityPageObject;
+import pageObjects.LoginPageObject;
+import pageObjects.RegistrationPageObject;
 import utils.PropertyReader;
 
-public class CloudNativeTest implements IDriver {
+public class CloudNativeTest {
     protected static AppiumDriver appiumDriver;
     protected static String API_KEY;
-    IPageObject po;
+    protected LoginPageObject loginPo;
+    protected RegistrationPageObject registrationPo;
+    protected BudgetActivityPageObject budgetActivityPo;
 
-    @Override
-    public AppiumDriver getDriver() {
-        return appiumDriver;
-    }
+    public AppiumDriver getDriver() {return appiumDriver; }
+    public LoginPageObject getLoginPo() { return loginPo; }
+    public RegistrationPageObject getRegistrationPo() { return registrationPo; }
+    public BudgetActivityPageObject getBudgetActivityPo() { return budgetActivityPo; }
 
-    public IPageObject getPo() {return po; }
-
-    @Parameters({"platformName", "appPackage", "appActivity"})
+    @Parameters({"platformName", "appPackage", "appActivity", "bundleId"})
     @BeforeSuite(alwaysRun = true)
-    public void setUp(String platformName, String appPackage, String appActivity) throws Exception {
-        System.out.println("Before");
+    public void setUp(String platformName,
+                      @Optional("") String appPackage,
+                      @Optional("") String appActivity,
+                      @Optional("") String bundleId) throws Exception {
+        System.out.println("Before suite: platform is " + platformName);
 
         Properties props = new PropertyReader().readPropertiesFromFile("test.properties");
         // Eliminate error caused by '/' symbols in API key
@@ -41,25 +46,30 @@ public class CloudNativeTest implements IDriver {
         // Device UDID parameter has high variability, so it gets passed as Maven command argument
         String udid = System.getProperty("udid");
 
-        setAppiumDriver(platformName, udid, appPackage, appActivity);
+        setAppiumDriver(platformName, udid, appPackage, appActivity, bundleId);
         System.out.println("Appium Driver: " + appiumDriver.toString());
 
-        po = new NativeHomeworkPageObject(getDriver());
+        loginPo = new LoginPageObject(getDriver());
+        // uncomment the following lines if you want to rewrite tests without chaining fluent page objects
+        //registrationPo = new RegistrationPageObject(getDriver());
+        //budgetActivityPo = new BudgetActivityPageObject(getDriver());
+
     }
 
     @AfterSuite(alwaysRun = true)
     public void tearDown() throws Exception {
-        System.out.println("After");
+        System.out.println("After suite");
         appiumDriver.closeApp();
     }
 
     private void setAppiumDriver(String platformName,
                                  String udid,
                                  String appPackage,
-                                 String appActivity
+                                 String appActivity,
+                                 String bundleId
                                  ) {
         DesiredCapabilities capabilities = new DesiredCapabilities();
-        //mandatory Android capabilities
+
         capabilities.setCapability("platformName",platformName);
         capabilities.setCapability("udid", udid);
         // deviceName commented out since it's currently possible to address Android devices by "UDID" (serial number)
@@ -68,6 +78,8 @@ public class CloudNativeTest implements IDriver {
         capabilities.setCapability("appPackage", appPackage);
         // avoid Chrome driver version errors
         capabilities.setCapability("appActivity",appActivity);
+
+        capabilities.setCapability("bundleId", bundleId);
 
         try {
             appiumDriver = new AppiumDriver(
@@ -78,6 +90,6 @@ public class CloudNativeTest implements IDriver {
 
         // Timeouts tuning
         appiumDriver.manage().timeouts()
-                    .implicitlyWait(60, TimeUnit.SECONDS);
+                    .implicitlyWait(30, TimeUnit.SECONDS);
     }
 }

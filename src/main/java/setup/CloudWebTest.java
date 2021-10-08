@@ -4,27 +4,17 @@ import static java.lang.String.format;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import io.appium.java_client.AppiumDriver;
-import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
-import java.util.List;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
-import org.testng.annotations.Test;
-import pageObjects.PageObject;
+import setup.examples.IDriver;
 import utils.PropertyReader;
 
 public class CloudWebTest implements IDriver {
@@ -39,7 +29,7 @@ public class CloudWebTest implements IDriver {
     @Parameters({"platformName", "browserName"})
     @BeforeSuite(alwaysRun = true)
     public void setUp(String platformName, String browserName) throws Exception {
-        System.out.println("Before");
+        System.out.println("Before suite");
 
         Properties props = new PropertyReader().readPropertiesFromFile("test.properties");
         // Eliminate error caused by '/' symbols in API key
@@ -54,7 +44,7 @@ public class CloudWebTest implements IDriver {
 
     @AfterSuite(alwaysRun = true)
     public void tearDown() throws Exception {
-        System.out.println("After");
+        System.out.println("After suite");
         appiumDriver.closeApp();
     }
 
@@ -81,7 +71,7 @@ public class CloudWebTest implements IDriver {
 
         // Timeouts tuning
         appiumDriver.manage().timeouts()
-                    .pageLoadTimeout(20, TimeUnit.MINUTES)
-                    .implicitlyWait(60, TimeUnit.SECONDS);
+                    .pageLoadTimeout(1, TimeUnit.MINUTES)
+                    .implicitlyWait(30, TimeUnit.SECONDS);
     }
 }
