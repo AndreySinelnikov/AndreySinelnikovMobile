@@ -3,21 +3,17 @@ package setup;
 import static java.lang.String.format;
 
 import io.appium.java_client.AppiumDriver;
+import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
-import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
-import pageObjects.BudgetActivityPageObject;
-import pageObjects.LoginPageObject;
-import pageObjects.RegistrationPageObject;
-import utils.PropertyReader;
+import pageObjects.nativeApp.BudgetActivityPageObject;
+import pageObjects.nativeApp.LoginPageObject;
+import pageObjects.nativeApp.RegistrationPageObject;
 
 public class NativeTest {
     protected static AppiumDriver appiumDriver;
@@ -32,10 +28,8 @@ public class NativeTest {
 
     @Parameters({"deviceName", "platformName", "app"})
     @BeforeSuite(alwaysRun = true)
-    public void setUp(String deviceName,
-                      String platformName,
-                      String app) throws Exception {
-        System.out.println("Before suite: platform is " + platformName);
+    public void setUp(String deviceName, String platformName, String app) {
+        System.out.println("Before suite: native app, platform is " + platformName);
 
         setAppiumDriver(deviceName, platformName, app);
         System.out.println("Appium Driver: " + appiumDriver.toString());
@@ -43,23 +37,20 @@ public class NativeTest {
         loginPo = new LoginPageObject(getDriver());
         registrationPo = new RegistrationPageObject(getDriver());
         budgetActivityPo = new BudgetActivityPageObject(getDriver());
-
     }
 
     @AfterSuite(alwaysRun = true)
-    public void tearDown() throws Exception {
-        System.out.println("After suite");
+    public void tearDown() {
+        System.out.println("After suite: native app");
         appiumDriver.closeApp();
     }
 
-    private void setAppiumDriver(String deviceName,
-                                 String platformName,
-                                 String app) {
+    private void setAppiumDriver(String deviceName, String platformName, String app) {
         DesiredCapabilities capabilities = new DesiredCapabilities();
 
         capabilities.setCapability("deviceName", deviceName);
         capabilities.setCapability("platformName", platformName);
-        capabilities.setCapability("app", app);
+        capabilities.setCapability("app", new File(app).getAbsolutePath());
 
         try {
             appiumDriver = new AppiumDriver(new URL(System.getProperty("ts.appium")), capabilities);

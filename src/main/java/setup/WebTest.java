@@ -1,22 +1,15 @@
 package setup;
 
-import static java.lang.String.format;
-import static org.assertj.core.api.Assertions.assertThat;
-
 import io.appium.java_client.AppiumDriver;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
-import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Parameters;
-import pageObjects.GoogleSearchPageObject;
-import pageObjects.GoogleSearchResultPageObject;
-import utils.PropertyReader;
+import pageObjects.webApp.GoogleSearchPageObject;
+import pageObjects.webApp.GoogleSearchResultPageObject;
 
 public class WebTest {
     protected static AppiumDriver appiumDriver;
@@ -29,7 +22,7 @@ public class WebTest {
 
     @Parameters({"deviceName", "platformName", "browserName", "googleSearchPage"})
     @BeforeSuite(alwaysRun = true)
-    public void setUp(String deviceName, String platformName, String browserName, String googleSearchPage) throws Exception {
+    public void setUp(String deviceName, String platformName, String browserName, String googleSearchPage) {
         System.out.println("Before suite: web app tests");
 
         setAppiumDriver(deviceName, platformName, browserName);
@@ -40,7 +33,7 @@ public class WebTest {
     }
 
     @AfterSuite(alwaysRun = true)
-    public void tearDown() throws Exception {
+    public void tearDown() {
         System.out.println("After suite: web app tests");
         appiumDriver.closeApp();
     }

@@ -1,9 +1,10 @@
-package pageObjects;
+package pageObjects.webApp;
 
 import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import pageObjects.BasePageObject;
 
 public class GoogleSearchPageObject extends BasePageObject {
     private String baseUrl;

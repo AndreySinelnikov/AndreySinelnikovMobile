@@ -1,13 +1,13 @@
-package pageObjects;
+package pageObjects.nativeApp;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import org.openqa.selenium.WebElement;
+import pageObjects.BasePageObject;
 
 public class LoginPageObject extends BasePageObject {
 
-    // login page
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeTextField[@value='user@example.com']")
     @AndroidFindBy(id = "platkovsky.alexey.epamtestapp:id/login_email")
     private WebElement loginField;
@@ -23,13 +23,6 @@ public class LoginPageObject extends BasePageObject {
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@label='Register new account']")
     @AndroidFindBy(id = "platkovsky.alexey.epamtestapp:id/register_button")
     private WebElement registerButton;
-
-
-//    public LoginPageObject(AppiumDriver driver) {
-//        PageFactory.initElements( new AppiumFieldDecorator(driver), this);
-//        this.driver = driver;
-//        wait = new WebDriverWait(this.driver, 23);
-//    }
 
     public LoginPageObject(AppiumDriver appiumDriver) { super(appiumDriver); }
 
