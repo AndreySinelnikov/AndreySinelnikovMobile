@@ -1,7 +1,7 @@
 Launch native app test via terminal command:
 
-`mvn clean test -PhomeworkNative`
+`mvn clean test -Phomework2AndroidNative`
 
 Launch web app test via terminal command:
 
-`mvn clean test -PhomeworkWeb`
+`mvn clean test -Phomework2AndroidWeb`

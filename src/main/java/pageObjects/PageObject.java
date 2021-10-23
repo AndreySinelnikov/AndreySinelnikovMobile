@@ -30,7 +30,7 @@ public class PageObject implements IPageObject {
 
 
     @Override
-    public WebElement getWelement(String weName) throws NoSuchFieldException, IllegalAccessException {
+    public WebElement getWebElement(String weName) throws NoSuchFieldException, IllegalAccessException {
         // use reflection technique
         Field field = somePageObject.getClass().getDeclaredField(weName);
         field.setAccessible(true);

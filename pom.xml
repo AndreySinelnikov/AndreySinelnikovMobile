@@ -23,7 +23,6 @@
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
             <version>3.21.0</version>
-            <scope>test</scope>
         </dependency>
 
     </dependencies>
@@ -76,22 +75,22 @@
         </profile>
 
         <profile>
-            <id>homeworkNative</id>
+            <id>homework2AndroidNative</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <suite.file>./src/test/resources/homeworkNativeTNG.xml</suite.file>
+                <suite.file>./src/test/resources/homework_2/localAndroidNativeTNG.xml</suite.file>
             </properties>
         </profile>
 
         <profile>
-            <id>homeworkWeb</id>
+            <id>homework2AndroidWeb</id>
             <activation>
                 <activeByDefault>false</activeByDefault>
             </activation>
             <properties>
-                <suite.file>./src/test/resources/homeworkWebTNG.xml</suite.file>
+                <suite.file>./src/test/resources/homework_2/localAndroidWebTNG.xml</suite.file>
             </properties>
         </profile>
     </profiles>

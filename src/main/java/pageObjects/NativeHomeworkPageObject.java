@@ -29,10 +29,10 @@ public class NativeHomeworkPageObject {
     WebElement registrationUsernameField;
 
     @AndroidFindBy(id = "platkovsky.alexey.epamtestapp:id/registration_password")
-    WebElement registrationPassword;
+    WebElement registrationPasswordField;
 
     @AndroidFindBy(id = "platkovsky.alexey.epamtestapp:id/registration_confirm_password")
-    WebElement registrationConfirmPassword;
+    WebElement registrationConfirmPasswordField;
 
     @AndroidFindBy(id = "platkovsky.alexey.epamtestapp:id/register_new_account_button")
     WebElement registerNewAccountButton;
