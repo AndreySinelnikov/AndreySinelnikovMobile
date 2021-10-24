@@ -19,6 +19,8 @@ public class WebTest {
     public AppiumDriver getDriver() {
         return appiumDriver;
     }
+    public GoogleSearchPageObject getSearchPo() { return searchPo; }
+    public GoogleSearchResultPageObject getSearchResultPo() { return searchResultPo; }
 
     @Parameters({"deviceName", "platformName", "browserName", "googleSearchPage"})
     @BeforeSuite(alwaysRun = true)

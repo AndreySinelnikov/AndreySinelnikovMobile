@@ -11,10 +11,10 @@ public class WebMobileTests extends WebTest {
     @Parameters({"searchItem"})
     @Test(description = "Searching item via Google search page produces some relevant results")
     public void googleSearchShouldProduceSomeRelevantResults(String searchItem) {
-        searchPo.open();
-        searchPo.submitSearchItem(searchItem);
+        getSearchPo().open();
+        getSearchPo().submitSearchItem(searchItem);
 
-        long itemMentionNumber = searchResultPo.getNumberOfLinkHeadersContainingSearchItem(searchItem);
+        long itemMentionNumber = getSearchResultPo().getNumberOfLinkHeadersContainingSearchItem(searchItem);
         assertThat(itemMentionNumber)
             .as("There should be multiple search results for a given item")
             .isGreaterThan(1L);

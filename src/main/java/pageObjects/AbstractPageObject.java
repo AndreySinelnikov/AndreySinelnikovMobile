@@ -11,14 +11,14 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public abstract class BasePageObject {
+public abstract class AbstractPageObject {
     protected static int DEFAULT_WAIT_TIMEOUT = 23; // in seconds
 
     protected AppiumDriver appiumDriver;
     protected WebDriverWait wait;
 
-    // to be utilized in child classes
-    protected BasePageObject(AppiumDriver appiumDriver) {
+    // constructor to be utilized in child classes
+    protected AbstractPageObject(AppiumDriver appiumDriver) {
         PageFactory.initElements( new AppiumFieldDecorator(appiumDriver), this);
         this.appiumDriver = appiumDriver;
         wait = new WebDriverWait(this.appiumDriver, DEFAULT_WAIT_TIMEOUT);

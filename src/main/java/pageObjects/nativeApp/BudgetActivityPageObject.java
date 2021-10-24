@@ -6,9 +6,9 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import org.openqa.selenium.WebElement;
-import pageObjects.BasePageObject;
+import pageObjects.AbstractPageObject;
 
-public class BudgetActivityPageObject extends BasePageObject {
+public class BudgetActivityPageObject extends AbstractPageObject {
 
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@value='Budget']")
     @AndroidFindBy(id = "platkovsky.alexey.epamtestapp:id/expenses_list")

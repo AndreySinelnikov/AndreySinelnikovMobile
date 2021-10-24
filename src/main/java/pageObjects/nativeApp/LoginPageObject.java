@@ -4,9 +4,9 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import org.openqa.selenium.WebElement;
-import pageObjects.BasePageObject;
+import pageObjects.AbstractPageObject;
 
-public class LoginPageObject extends BasePageObject {
+public class LoginPageObject extends AbstractPageObject {
 
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeTextField[@value='user@example.com']")
     @AndroidFindBy(id = "platkovsky.alexey.epamtestapp:id/login_email")
