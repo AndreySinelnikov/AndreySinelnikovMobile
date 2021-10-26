@@ -1,0 +1,15 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Homework 2 - Android native app mobile testing Suite">
+  <parameter name="deviceName" value="emulator-5554"></parameter>
+  <parameter name="platformName" value="Android"></parameter>
+  <parameter name="app" value="./src/main/resources/EPAMTestApp.apk"></parameter>
+
+  <parameter name="email" value="testuser@gmail.com"></parameter>
+  <parameter name="username" value="Test user"></parameter>
+  <parameter name="password" value="registersesame1234"></parameter>
+  <test name="Local native tests">
+    <classes>
+      <class name="homework_2.NativeMobileTests"></class>
+    </classes>
+  </test>
+</suite>
