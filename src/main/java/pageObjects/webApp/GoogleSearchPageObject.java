@@ -7,7 +7,7 @@ import org.openqa.selenium.support.FindBy;
 import pageObjects.AbstractPageObject;
 
 public class GoogleSearchPageObject extends AbstractPageObject {
-    private String baseUrl;
+    private final String baseUrl;
 
     @FindBy(css = "input[aria-autocomplete]")
     private WebElement searchForm;

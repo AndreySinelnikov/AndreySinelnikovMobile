@@ -1,7 +1,5 @@
 package setup;
 
-import static java.lang.String.format;
-
 import io.appium.java_client.AppiumDriver;
 import java.io.File;
 import java.net.MalformedURLException;

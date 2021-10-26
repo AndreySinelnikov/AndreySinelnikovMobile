@@ -2,20 +2,17 @@ package pageObjects;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
-import java.util.function.Function;
-import java.util.function.Predicate;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public abstract class AbstractPageObject {
-    protected static int DEFAULT_WAIT_TIMEOUT = 23; // in seconds
+    protected final static int DEFAULT_WAIT_TIMEOUT = 23; // in seconds
 
-    protected AppiumDriver appiumDriver;
-    protected WebDriverWait wait;
+    protected final AppiumDriver appiumDriver;
+    protected final WebDriverWait wait;
 
     // constructor to be utilized in child classes
     protected AbstractPageObject(AppiumDriver appiumDriver) {
